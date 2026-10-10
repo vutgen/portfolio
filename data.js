@@ -10,7 +10,7 @@ const SITE = {
   stats: [
     { value: 40,  suffix: "+",  label: "проектов сдано" },
     { value: 5.0, suffix: "★",  label: "средний рейтинг", decimals: 1 },
-    { value: 3,   suffix: " дня", label: "средний срок лендинга" },
+    { value: 1,   suffix: " день", label: "средний срок лендинга" },
     { value: 100, suffix: "%",  label: "проектов в срок" },
   ],
 
