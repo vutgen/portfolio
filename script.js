@@ -64,6 +64,9 @@ function renderWorks(filter = "all") {
   bindTilt();
 }
 
+// Фильтр показываем, только если в портфолио есть и сайты, и боты.
+if (new Set(SITE.projects.map((p) => p.category)).size < 2) $(".filters").hidden = true;
+
 $$(".filter").forEach((b) => b.addEventListener("click", () => {
   $$(".filter").forEach((x) => x.classList.toggle("active", x === b));
   renderWorks(b.dataset.filter);
