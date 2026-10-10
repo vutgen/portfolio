@@ -160,7 +160,6 @@ main, .footer { max-width: 1240px; margin: 0 auto; padding-inline: clamp(16px, 4
 .section-head h2 { font-size: clamp(32px, 5vw, 64px); font-weight: 900; margin-top: 14px; }
 
 /* ---------- Работы ---------- */
-.filters[hidden] { display: none; }
 .filters { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
 .filter { padding: 10px 22px; border-radius: 100px; border: 1px solid var(--line); color: var(--muted); transition: .2s; }
 .filter:hover { color: var(--text); }
@@ -300,3 +299,6 @@ main, .footer { max-width: 1240px; margin: 0 auto; padding-inline: clamp(16px, 4
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+.empty { grid-column: 1 / -1; padding: 48px 24px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; color: var(--muted); }
+.empty a { color: var(--accent); text-decoration: underline; }

@@ -50,6 +50,10 @@ function placeholder(p) {
 function renderWorks(filter = "all") {
   const list = SITE.projects.map((p, i) => ({ ...p, i }))
     .filter((p) => filter === "all" || p.category === filter);
+  if (!list.length) {
+    $("#worksGrid").innerHTML = `<p class="empty">Здесь скоро появятся Telegram-боты. А пока можно <a href="${tgUrl}" target="_blank" rel="noopener">обсудить вашего бота</a>.</p>`;
+    return;
+  }
   $("#worksGrid").innerHTML = list.map((p) => `
     <article class="work reveal" style="--c:${p.color}" data-i="${p.i}" tabindex="0">
       <div class="work-media">${placeholder(p)}</div>
@@ -63,9 +67,6 @@ function renderWorks(filter = "all") {
   observeReveal();
   bindTilt();
 }
-
-// Фильтр показываем, только если в портфолио есть и сайты, и боты.
-if (new Set(SITE.projects.map((p) => p.category)).size < 2) $(".filters").hidden = true;
 
 $$(".filter").forEach((b) => b.addEventListener("click", () => {
   $$(".filter").forEach((x) => x.classList.toggle("active", x === b));
