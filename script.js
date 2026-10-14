@@ -9,13 +9,6 @@ $$("[data-tg]").forEach((a) => { a.href = tgUrl; a.target = "_blank"; a.rel = "n
 $$("[data-tg-handle]").forEach((el) => (el.textContent = "@" + SITE.telegram));
 $("#year").textContent = new Date().getFullYear();
 
-/* ---------- Цифры ---------- */
-$("#stats").innerHTML = SITE.stats.map((s) => `
-  <div class="stat reveal">
-    <div class="stat-value" data-count="${s.value}" data-decimals="${s.decimals || 0}">0</div>
-    <span class="stat-suffix">${esc(s.suffix)}</span>
-    <p>${esc(s.label)}</p>
-  </div>`).join("");
 
 function countUp(el) {
   const target = +el.dataset.count, dec = +el.dataset.decimals;
@@ -128,12 +121,6 @@ $("#steps").innerHTML = SITE.steps.map((s, i) => `
     <p>${esc(s.text)}</p>
   </li>`).join("");
 
-$("#reviewsGrid").innerHTML = SITE.reviews.map((r) => `
-  <figure class="review reveal">
-    <div class="stars">${"★".repeat(r.rating)}</div>
-    <blockquote>«${esc(r.text)}»</blockquote>
-    <figcaption><span class="ava">${esc(r.name[0])}</span><b>${esc(r.name)}</b><small>${esc(r.role)}</small></figcaption>
-  </figure>`).join("");
 
 /* ---------- Чат на первом экране ---------- */
 const chat = $("#heroChat");
