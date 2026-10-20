@@ -54,7 +54,16 @@
 @media (max-width: 860px) {
   .demo, .calc { grid-template-columns: 1fr; }
   .phone-demo { height: 520px; }
-  .calc-res { position: static; }
+  .calc-res { position: sticky; top: auto; bottom: 10px; z-index: 5; padding: 14px 18px; gap: 6px; background: #13131be8; backdrop-filter: blur(12px); box-shadow: 0 -10px 40px #000a; }
+  .calc-res .kicker, .calc-res .note { display: none; }
+  .calc-price { font-size: 18px; }
+  .calc-days { font-size: 15px; }
+  .calc-res .btn { padding: 10px 18px; font-size: 15px; width: 100%; justify-content: center; }
   .live-frame iframe { height: 380px; }
 }
 .modal-box h3 { overflow-wrap: anywhere; font-size: clamp(20px, 5.4vw, 32px); }
+@media (max-width: 600px) {
+  .live-sw { display: none !important; }
+  .live-frame { padding: 3px; }
+  .live-frame iframe { height: 520px; width: 100% !important; }
+}

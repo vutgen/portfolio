@@ -14,6 +14,13 @@ addEventListener("scroll", () => {
 }, { passive: true });
 
 /* ---------- Живой просмотр в модалке ---------- */
+function fit(live) { // на узком экране рисуем сайт в ширине телефона 390 px и уменьшаем, чтобы было видно мобильную вёрстку
+  const fr = $(".live-frame", live), ifr = $("iframe", fr);
+  if (innerWidth > 600) { ifr.style.transform = ""; ifr.style.height = ""; fr.style.height = ""; return; }
+  const k = (fr.clientWidth - 6) / 390;
+  ifr.style.cssText = `width:390px!important;height:${Math.round(560 / k)}px;transform:scale(${k});transform-origin:top left;max-width:none`;
+  fr.style.height = Math.round(560 + 6) + "px"; fr.style.display = "block"; fr.style.overflow = "hidden";
+}
 $("#modalContent").addEventListener("click", (e) => {
   const live = e.target.closest(".live");
   if (!live) return;
@@ -23,6 +30,7 @@ $("#modalContent").addEventListener("click", (e) => {
     fr.hidden = false;
     $(".live-sw", live).hidden = false;
     e.target.closest(".live-go").hidden = true;
+    fit(live);
   }
   const w = e.target.closest("[data-w]");
   if (w) {
@@ -70,7 +78,7 @@ function renderAdmin() {
     `<div class="seat ${s.left ? "" : "full"}"><span>${esc(c.name)} · ${esc(s.t)}</span><b>${s.left ? `мест: ${s.left}` : "мест нет"}</b></div>`).join("")).join("");
   $("#demoList").innerHTML = bookings.length
     ? bookings.map((b) => `<li><b>${esc(b.name)}</b> ${esc(b.cls)}, ${esc(b.t)}${b.reminded ? ' <em>напоминание отправлено</em>' : ""}</li>`).join("")
-    : '<li class="empty-li">Пока нет записей. Запишитесь в боте слева.</li>';
+    : '<li class="empty-li">Пока нет записей. Запишитесь в боте.</li>';
 }
 function start() {
   chat.innerHTML = ""; form.hidden = true;
