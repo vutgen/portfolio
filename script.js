@@ -88,6 +88,7 @@ function openModal(p) {
       <div class="result"><b>Результат</b><p>${esc(p.result)}</p></div>
     </div>
     <div class="chips">${p.stack.map((s) => `<span>${esc(s)}</span>`).join("")}</div>
+    ${p.link ? `<div class="live" data-link="${esc(p.link)}"><div class="live-bar"><button class="btn btn-small live-go">▶ Посмотреть вживую</button><span class="live-sw" hidden><button class="on" data-w="100%">Компьютер</button><button data-w="390px">Телефон</button></span></div><div class="live-frame" hidden><iframe title="Живой просмотр" loading="lazy"></iframe></div></div>` : ""}
     <div class="modal-actions">
       ${p.link ? `<a class="btn btn-ghost" href="${esc(p.link)}" target="_blank" rel="noopener">Открыть проект ↗</a>` : ""}
       <a class="btn" href="${tgUrl}" target="_blank" rel="noopener">Хочу так же</a>

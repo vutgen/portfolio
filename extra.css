@@ -1,0 +1,60 @@
+/* Индикатор прокрутки */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 150; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; transform: scaleX(0); }
+.section-lead { color: var(--muted); max-width: 40em; margin-top: 14px; }
+.note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+
+/* Демо-бот */
+.demo { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: 28px; align-items: start; }
+.phone-demo { position: relative; height: 560px; transform: none; animation: none; display: flex; flex-direction: column; }
+.phone-demo .chat { flex: 1; overflow-y: auto; }
+.live-btns button { display: block; width: 100%; text-align: center; padding: 9px; border-radius: 10px; background: #ffffff14; font-size: 14px; transition: .2s; }
+.live-btns button:hover:not(:disabled) { background: var(--accent); color: #000; }
+.live-btns button:disabled { opacity: .35; cursor: default; }
+.demo-input { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--line); }
+.demo-input[hidden] { display: none; }
+.demo-input input { flex: 1; min-width: 0; padding: 10px 14px; border-radius: 100px; border: 1px solid var(--line); background: var(--surface-2); color: var(--text); font: inherit; }
+.admin { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.admin h3 { font-size: 20px; margin-bottom: 16px; }
+.seats { display: grid; gap: 6px; margin-bottom: 18px; }
+.seat { display: flex; justify-content: space-between; gap: 10px; padding: 9px 14px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
+.seat b { color: var(--accent); font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+.seat.full b { color: #ff6b6b; }
+.bookings { list-style: none; display: grid; gap: 8px; margin-bottom: 18px; min-height: 48px; }
+.bookings li { padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 12px 12px 0; font-size: 15px; animation: rise .4s both; }
+.bookings li em { color: var(--muted); font-style: normal; font-size: 13px; margin-left: 6px; }
+.bookings .empty-li { border-left-color: var(--line); color: var(--muted); }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Живой просмотр */
+.live { margin-bottom: 24px; }
+.live-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+.live-sw { display: inline-flex; border: 1px solid var(--line); border-radius: 100px; overflow: hidden; }
+.live-sw[hidden], .live-frame[hidden], .live-go[hidden] { display: none; }
+.live-sw button { padding: 8px 16px; font-size: 14px; color: var(--muted); }
+.live-sw button.on { background: var(--text); color: var(--bg); }
+.live-frame { background: #000; border: 1px solid var(--line); border-radius: 16px; padding: 10px; display: flex; justify-content: center; }
+.live-frame iframe { width: 100%; height: 440px; border: 0; border-radius: 10px; background: #fff; transition: width .35s cubic-bezier(.2,.8,.2,1); max-width: 100%; }
+
+/* Калькулятор */
+.calc { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+.calc-form, .calc-res { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+.calc-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.ct { text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface-2); transition: .2s; }
+.ct small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.ct:hover { border-color: #ffffff40; }
+.ct.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.calc-opts { display: grid; gap: 8px; margin-bottom: 8px; }
+.opt { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); cursor: pointer; font-size: 15px; }
+.opt input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.opt.rush { margin-top: 8px; border: 1px dashed var(--line); background: none; }
+.calc-res { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; position: sticky; top: 90px; align-self: start; }
+.calc-price { font: 900 clamp(26px, 3.4vw, 38px)/1.1 var(--font-display); color: var(--accent); }
+.calc-days { color: var(--muted); font-size: 18px; }
+
+@media (max-width: 860px) {
+  .demo, .calc { grid-template-columns: 1fr; }
+  .phone-demo { height: 520px; }
+  .calc-res { position: static; }
+  .live-frame iframe { height: 380px; }
+}
+.modal-box h3 { overflow-wrap: anywhere; font-size: clamp(20px, 5.4vw, 32px); }

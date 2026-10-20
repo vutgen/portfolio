@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="extra.css?v=1">
 </head>
 <body>
   <div class="cursor" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="bg-glow" aria-hidden="true"><span></span><span></span></div>
 
   <!-- ========== ШАПКА ========== -->
@@ -19,7 +21,9 @@
     <a href="#top" class="logo">vuegen<span>.</span></a>
     <nav class="nav-links">
       <a href="#works">Работы</a>
+      <a href="#try">Попробовать бота</a>
       <a href="#services">Услуги</a>
+      <a href="#calc">Цена</a>
       <a href="#process">Как работаю</a>
     </nav>
     <a class="btn btn-small" data-tg href="#">Написать</a>
@@ -75,19 +79,68 @@
       <div class="works-grid" id="worksGrid"></div>
     </section>
 
+    <!-- ========== ЖИВОЙ БОТ ========== -->
+    <section class="section" id="try">
+      <div class="section-head">
+        <span class="kicker">02 / Попробуйте сами</span>
+        <h2>Бот записи: <span class="accent">нажмите и проверьте</span></h2>
+        <p class="section-lead">Это рабочая демо-логика: выберите занятие, запишитесь, и справа сразу увидите, что получает администратор. Места ограничены, как в настоящей студии.</p>
+      </div>
+      <div class="demo">
+        <div class="phone phone-demo">
+          <div class="phone-head"><div class="avatar">🧘</div><div><b>Студия «Лотос»</b><small>бот записи, демо</small></div></div>
+          <div class="chat" id="demoChat"></div>
+          <form class="demo-input" id="demoForm" hidden><input id="demoName" placeholder="Ваше имя" maxlength="24" autocomplete="off"><button class="btn btn-small">Отправить</button></form>
+        </div>
+        <aside class="admin">
+          <h3>Что видит администратор</h3>
+          <div class="seats" id="demoSeats"></div>
+          <ul class="bookings" id="demoList"><li class="empty-li">Пока нет записей. Запишитесь в боте слева.</li></ul>
+          <div class="admin-actions">
+            <button class="btn btn-ghost btn-small" id="demoRemind">⏩ Прошёл день: отправить напоминание</button>
+            <button class="btn btn-ghost btn-small" id="demoReset">Сбросить демо</button>
+          </div>
+          <p class="note">Так же работает бот, который я настраиваю под вашу студию: свои занятия, цены, лимиты и уведомления.</p>
+        </aside>
+      </div>
+    </section>
+
     <!-- ========== УСЛУГИ ========== -->
     <section class="section" id="services">
       <div class="section-head">
-        <span class="kicker">02 / Услуги</span>
+        <span class="kicker">03 / Услуги</span>
         <h2>Что я <span class="accent">сделаю</span> для вас</h2>
       </div>
       <div class="services" id="servicesGrid"></div>
     </section>
 
+    <!-- ========== КАЛЬКУЛЯТОР ========== -->
+    <section class="section" id="calc">
+      <div class="section-head">
+        <span class="kicker">04 / Цена</span>
+        <h2>Прикиньте <span class="accent">стоимость</span></h2>
+        <p class="section-lead">Выберите, что нужно, и увидите ориентировочные цену и срок. Точную называю после короткого обсуждения.</p>
+      </div>
+      <div class="calc">
+        <div class="calc-form">
+          <div class="calc-types" id="calcTypes"></div>
+          <div class="calc-opts" id="calcOpts"></div>
+          <label class="opt rush"><input type="checkbox" id="calcRush"><span>Срочно (в два раза быстрее, надбавка 30%)</span></label>
+        </div>
+        <div class="calc-res">
+          <span class="kicker">Ориентировочно</span>
+          <div class="calc-price" id="calcPrice">—</div>
+          <div class="calc-days" id="calcDays">—</div>
+          <a class="btn magnetic" id="calcSend" target="_blank" rel="noopener" href="#">Обсудить в Telegram</a>
+          <p class="note">Цена — вилка. Для новых заказчиков могу сделать небольшую демо-часть бесплатно.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== ПРОЦЕСС ========== -->
     <section class="section" id="process">
       <div class="section-head">
-        <span class="kicker">03 / Процесс</span>
+        <span class="kicker">05 / Процесс</span>
         <h2>Как мы <span class="accent">работаем</span></h2>
       </div>
       <ol class="steps" id="steps"></ol>
@@ -120,6 +173,7 @@
 
   <!-- data.js: ВЕСЬ контент сайта (работы, услуги). Редактируйте его. -->
   <script src="data.js?v=8"></script>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
+  <script src="extra.js?v=1"></script>
 </body>
 </html>
